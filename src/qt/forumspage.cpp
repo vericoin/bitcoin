@@ -37,17 +37,17 @@ void ForumsPage::setModel(WalletModel *model)
 
 void ForumsPage::on_explorerButton_clicked()
 {
-    QDesktopServices::openUrl(QUrl("http://www.vericoin.info/wallet/blockchain.php"));
+    QDesktopServices::openUrl(QUrl("https://chainz.cryptoid.info/vrc/"));
 }
 
 void ForumsPage::on_chatButton_clicked()
 {
-    QDesktopServices::openUrl(QUrl("http://www.vericoin.info/wallet/forums2.php"));
+    QDesktopServices::openUrl(QUrl("https://slackin-idqpjecyzv.now.sh/"));
 }
 
 void ForumsPage::on_forumButton_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://forums.vericoin.info/"));
+    QDesktopServices::openUrl(QUrl("https://bitcointalk.org/index.php?topic=2385158.0"));
 }
 
 void ForumsPage::on_siteButton_clicked()
