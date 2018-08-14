@@ -75,6 +75,9 @@ public:
     // network and disk
     std::vector<CTransactionRef> vtx;
 
+    // VeriCoin: block signature.
+    std::vector<unsigned char> vchBlockSig;
+
     // memory only
     mutable bool fChecked;
 
@@ -95,12 +98,14 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(*(CBlockHeader*)this);
         READWRITE(vtx);
+        READWRITE(vchBlockSig);
     }
 
     void SetNull()
     {
         CBlockHeader::SetNull();
         vtx.clear();
+        vchBlockSig.clear();
         fChecked = false;
     }
 
