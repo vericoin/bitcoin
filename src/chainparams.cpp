@@ -117,11 +117,11 @@ public:
         vSeeds.emplace_back("apac.vrc.vericonomy.com");
         vSeeds.emplace_back("amer.vrc.vericonomy.com");
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,70);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,132);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,70+128);
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x46, 0x96, 0xC7, 0xE3};
+        base58Prefixes[EXT_SECRET_KEY] = {0x46, 0x96, 0xBB, 0x24};
 
         bech32_hrp = "vericoin";
 
