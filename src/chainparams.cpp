@@ -65,10 +65,10 @@ public:
         strNetworkID = "main";
         consensus.nSubsidyHalvingInterval = 210000;
         consensus.BIP16Height = 0;
-        consensus.BIP34Height = -1;
+        consensus.BIP34Height = 1000000000; // VeriCoin: disable
         consensus.BIP34Hash = uint256();
-        consensus.BIP65Height = -1;
-        consensus.BIP66Height = -1;
+        consensus.BIP65Height = 1000000000; // VeriCoin: disable
+        consensus.BIP66Height = 1000000000; // VeriCoin: disable
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 16 * 60; // 16 minutes
         consensus.nPowTargetSpacing = 1 * 60; // 1 minute
@@ -76,19 +76,25 @@ public:
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.last_pow_block = 20160;
+
+        /*
+         * VeriCoin
+         * XXX Deployments.
+         */
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1000000000; // VeriCoin: disable
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1000000000; // VeriCoin: disable
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800; // May 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1000000000; // VeriCoin: disable
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1000000000; // VeriCoin: disable
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1479168000; // November 15th, 2016.
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1510704000; // November 15th, 2017.
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1000000000; // VeriCoin: disable
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1000000000; // VeriCoin: disable
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256();
