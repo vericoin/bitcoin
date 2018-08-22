@@ -1736,23 +1736,27 @@ static unsigned int GetBlockScriptFlags(const CBlockIndex* pindex, const Consens
 
     // Start enforcing the DERSIG (BIP66) rule
     if (pindex->nHeight >= consensusparams.BIP66Height) {
-        flags |= SCRIPT_VERIFY_DERSIG;
+        assert(0);
+        //flags |= SCRIPT_VERIFY_DERSIG;
     }
 
     // Start enforcing CHECKLOCKTIMEVERIFY (BIP65) rule
     if (pindex->nHeight >= consensusparams.BIP65Height) {
-        flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
+        assert(0);
+        //flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
     }
 
     // Start enforcing BIP68 (sequence locks) and BIP112 (CHECKSEQUENCEVERIFY) using versionbits logic.
     if (VersionBitsState(pindex->pprev, consensusparams, Consensus::DEPLOYMENT_CSV, versionbitscache) == THRESHOLD_ACTIVE) {
-        flags |= SCRIPT_VERIFY_CHECKSEQUENCEVERIFY;
+        assert(0);
+        //flags |= SCRIPT_VERIFY_CHECKSEQUENCEVERIFY;
     }
 
     // Start enforcing WITNESS rules using versionbits logic.
     if (IsWitnessEnabled(pindex->pprev, consensusparams)) {
-        flags |= SCRIPT_VERIFY_WITNESS;
-        flags |= SCRIPT_VERIFY_NULLDUMMY;
+        assert(0);
+        //flags |= SCRIPT_VERIFY_WITNESS;
+        //flags |= SCRIPT_VERIFY_NULLDUMMY;
     }
 
     return flags;
