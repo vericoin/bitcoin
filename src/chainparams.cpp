@@ -69,7 +69,8 @@ public:
         consensus.BIP34Hash = uint256();
         consensus.BIP65Height = 1000000000; // VeriCoin: disable
         consensus.BIP66Height = 1000000000; // VeriCoin: disable
-        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = ~arith_uint256() >> 20; // "standard" scrypt target limit for pow.
+        consensus.posLimit = ~arith_uint256() >> 20; // "standard" scrypt target limit for pos.
         consensus.nPowTargetTimespan = 16 * 60; // 16 minutes
         consensus.nPowTargetSpacing = 1 * 60; // 1 minute
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -77,6 +78,8 @@ public:
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.last_pow_block = 20160;
+        consensus.nTargetTimespan = 16 * 60; // 16 minutes.
+        consensus.nTargetSpacing = 1 * 60; // 1 minute.
 
         /*
          * VeriCoin
