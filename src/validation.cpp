@@ -3174,6 +3174,13 @@ static bool ContextualCheckBlock(const CBlock& block, CValidationState& state, c
     if (block.IsProofOfWork() && nHeight > consensusParams.last_pow_block)
         return state.DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
 
+    /*
+     * VeriCoin
+     * Check the pow or pos.
+     */
+    if (block.nBits != GetNextTargetRequired(pindexPrev, block.IsProofOfStake(), consensusParams))
+        return state.DoS(100, error("AcceptBlock() : incorrect %s", block.IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
+
     // Start enforcing BIP113 (Median Time Past) using versionbits logic.
     int nLockTimeFlags = 0;
     if (VersionBitsState(pindexPrev, consensusParams, Consensus::DEPLOYMENT_CSV, versionbitscache) == THRESHOLD_ACTIVE) {
