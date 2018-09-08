@@ -77,7 +77,7 @@ struct Params {
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
     uint256 nMinimumChainWork;
     uint256 defaultAssumeValid;
-    uint32_t last_pow_block;
+    int32_t last_pow_block;
     int32_t nTargetTimespan;
     int32_t nTargetSpacing;
 };
