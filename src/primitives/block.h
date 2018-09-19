@@ -134,6 +134,8 @@ public:
         return !IsProofOfStake();
     }
 
+    bool CheckBlockSignature(bool fProofOfStake) const;
+
 };
 
 /** Describes a place in the block chain to another node such that if the

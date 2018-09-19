@@ -209,7 +209,6 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
     // assert(fAllowWitness == false);
 
     s >> tx.nVersion;
-    unsigned char flags = 0;
     tx.vin.clear();
     tx.vout.clear();
     s >> tx.nTime;
