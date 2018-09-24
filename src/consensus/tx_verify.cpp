@@ -233,15 +233,25 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
         }
     }
 
+    /*
+     * VeriCoin:
+     * We do not want to check the transaction for bad-txns-in-belowout if the transaction is
+     * the result of pos action. in that case we will run separate tests.
+     */
     const CAmount value_out = tx.GetValueOut();
-    if (nValueIn < value_out) {
+    if (!tx.IsCoinStake() && nValueIn < value_out) {
         return state.DoS(100, false, REJECT_INVALID, "bad-txns-in-belowout", false,
             strprintf("value in (%s) < value out (%s)", FormatMoney(nValueIn), FormatMoney(value_out)));
     }
 
+    /*
+     * VeriCoin:
+     * We do not want to check the transaction for bad-txns-fee-outofrange if the transaction is
+     * the result of pos action. in that case we will run separate tests.
+     */
     // Tally transaction fees
     const CAmount txfee_aux = nValueIn - value_out;
-    if (!MoneyRange(txfee_aux)) {
+    if (!tx.IsCoinStake() && !MoneyRange(txfee_aux)) {
         return state.DoS(100, false, REJECT_INVALID, "bad-txns-fee-outofrange");
     }
 

@@ -121,7 +121,7 @@ BITCOIN_CORE_H = \
   policy/fees.h \
   policy/policy.h \
   policy/rbf.h \
-  pow.h \
+  vericoin.h \
   protocol.h \
   random.h \
   reverse_iterator.h \
@@ -206,7 +206,7 @@ libbitcoin_server_a_SOURCES = \
   policy/fees.cpp \
   policy/policy.cpp \
   policy/rbf.cpp \
-  pow.cpp \
+  vericoin.cpp \
   rest.cpp \
   rpc/blockchain.cpp \
   rpc/mining.cpp \
@@ -269,6 +269,12 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/hmac_sha512.h \
   crypto/ripemd160.cpp \
   crypto/ripemd160.h \
+  crypto/scrypt.cpp \
+  crypto/scrypt.h \
+  crypto/scrypt-x86.S \
+  crypto/scrypt-x64.S \
+  crypto/sha2-x86.S \
+  crypto/sha2-x64.S \
   crypto/sha1.cpp \
   crypto/sha1.h \
   crypto/sha256.cpp \

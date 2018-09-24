@@ -8,7 +8,7 @@
 #include <chainparams.h>
 #include <hash.h>
 #include <random.h>
-#include <pow.h>
+#include <vericoin.h>
 #include <uint256.h>
 #include <util.h>
 #include <ui_interface.h>
@@ -287,8 +287,15 @@ bool CBlockTreeDB::LoadBlockIndexGuts(const Consensus::Params& consensusParams, 
                 pindexNew->nStatus        = diskindex.nStatus;
                 pindexNew->nTx            = diskindex.nTx;
 
-                if (!CheckProofOfWork(pindexNew->GetBlockHash(), pindexNew->nBits, consensusParams))
-                    return error("%s: CheckProofOfWork failed: %s", __func__, pindexNew->ToString());
+                /*
+                 * VeriCoin:
+                 * Disable pow sanity check while loading block index from disk.
+                 * While it is technically feasible to verify the pow, doing so takes several minutes as it
+                 * requires recomputing every pow hash during every startup.
+                 * We opt instead to simply trust the data that is on your local disk.
+                 */
+                //if (!CheckProofOfWork(pindexNew->GetBlockHash(), pindexNew->nBits, consensusParams))
+                //    return error("%s: CheckProofOfWork failed: %s", __func__, pindexNew->ToString());
 
                 pcursor->Next();
             } else {
