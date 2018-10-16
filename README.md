@@ -1,4 +1,4 @@
-VeriCoin Core 0.16 - This code update is still in development and not complete, use at your own risk!
+VeriCore 0.16 - This code update is still in development and not complete, use at your own risk!
 
 
 Bitcoin Core integration/staging tree
