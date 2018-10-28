@@ -259,7 +259,6 @@ void Downloader::on_downloadButton_clicked()
 // This will be called when download button is clicked (or from Autodownload feature)
 void Downloader::startRequest(QUrl url)
 {
-    downloadProgress = 0;
     downloadFinished = false;
 
     // Start the timer
@@ -282,6 +281,11 @@ void Downloader::startRequest(QUrl url)
     // Also, downloadProgress() signal is emitted when data is received
     connect(reply, SIGNAL(downloadProgress(qint64,qint64)),
             this, SLOT(updateDownloadProgress(qint64,qint64)));
+
+    connect(reply, &QNetworkReply::downloadProgress, [this]() {
+      this->downloadTimer->stop();
+      this->downloadTimer->start();
+    });
 
     // This signal is emitted when the reply has finished processing.
     // After this signal is emitted,
@@ -459,20 +463,12 @@ void Downloader::updateDownloadProgress(qint64 bytesRead, qint64 totalBytes)
 // This is called during the download to check for a hung state
 void Downloader::timerCheckDownloadProgress()
 {
-    if (ui->progressBar->value() > downloadProgress)
-    {
-        downloadProgress = ui->progressBar->value();
-        return;
-    }
-    else
-    {
-        if (!downloadFinished)
-        {
-            qDebug()<<__PRETTY_FUNCTION__<<": We appear to be hung";
-            // We appear to be hung.
-            cancelDownload();
-        }
-    }
+  if (!downloadFinished)
+  {
+      qDebug()<<__PRETTY_FUNCTION__<<": We appear to be hung";
+      // We appear to be hung.
+      cancelDownload();
+  }
 }
 
 // This is called when the URL is already pre-defined (overloaded)
