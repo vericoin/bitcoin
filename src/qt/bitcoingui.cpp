@@ -878,8 +878,8 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
 
         stakingLabel->setText(QString("Syncing..."));
         tooltip = tr("Syncing") + QString(".\n") + tooltip;
-        labelStakingIcon->setMovie(syncingIconMovie);
-        syncingIconMovie->start();
+//        labelStakingIcon->setMovie(syncingIconMovie);
+//        syncingIconMovie->start();
         overviewPage->showOutOfSyncWarning(true);
     }
 

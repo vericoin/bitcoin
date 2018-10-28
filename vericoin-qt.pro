@@ -49,17 +49,18 @@ LIBS += $$UNWIND_LIB_PATH $$PROFILER_LIB_PATH
 
 # win build dependencies
 windows {
-BOOST_LIB_SUFFIX=-mgw53-mt-1_57
-BOOST_INCLUDE_PATH=C:/deps/boost_1_57_0
-BOOST_LIB_PATH=C:/deps/boost_1_57_0/stage/lib
-BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.2n/include
-OPENSSL_LIB_PATH=C:/deps/openssl-1.0.2n
-MINIUPNPC_INCLUDE_PATH=C:/deps
-MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
-QRENCODE_INCLUDE_PATH=C:/deps/libqrencode
-QRENCODE_LIB_PATH=C:/deps/libqrencode/.libs
+QMAKE_CXXFLAGS += -fpermissive
+BOOST_LIB_SUFFIX=-mgw73-mt-s-1_59
+BOOST_INCLUDE_PATH=E:/VericoinVerium/deps/boost_1_59_0
+BOOST_LIB_PATH=E:/VericoinVerium/deps/boost_1_59_0/stage/lib
+BDB_INCLUDE_PATH=E:/VericoinVerium/deps/db-4.8.30.NC/build_unix
+BDB_LIB_PATH=E:/VericoinVerium/deps/db-4.8.30.NC/build_unix/
+OPENSSL_INCLUDE_PATH=E:/openssl-1.0.2o_x64/dist/include
+OPENSSL_LIB_PATH=E:/openssl-1.0.2o_x64/dist/lib
+MINIUPNPC_INCLUDE_PATH=E:/VericoinVerium/deps/miniupnpc-1.9
+MINIUPNPC_LIB_PATH=E:/VericoinVerium/deps/miniupnpc-1.9
+QRENCODE_INCLUDE_PATH=E:/VericoinVerium/deps/qrencode-4.0.2
+QRENCODE_LIB_PATH=E:/VericoinVerium/deps/qrencode-4.0.2/.libs
 }
 
 unix: contains(TARGET_BIT, m32) {

@@ -362,9 +362,12 @@ void OverviewPage::on_stakeButton_clicked()
 void OverviewPage::startStaking()
 {
         Staking = true;
-        if (GetTimeToStake() > 0){stakeButtonLabel->setMovie(stakingIconMovie);
-            stakingIconMovie->start();}
-        else{stakeButtonLabel->setPixmap(QPixmap(":/icons/stakingon"));
+        if (GetTimeToStake() > 0)
+        {
+          stakeButtonLabel->setMovie(stakingIconMovie);
+          stakingIconMovie->start();
+        } else {
+          stakeButtonLabel->setPixmap(QPixmap(":/icons/stakingon"));
         }
         ui->stakingLabel->setText("Click to stop:");
         MilliSleep(100);
